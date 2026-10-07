@@ -7,28 +7,29 @@ class Category(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Возвращает название категории."""
         return self.name
 
 
 class Book(models.Model):
-    """Модель книги интернет-магазина."""
+    """Модель книги ."""
 
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+    price = models.DecimalField(
+        max_digits=5,
+        decimal_places=2,
+    )
     description = models.TextField()
     stock = models.IntegerField()
 
-    # Каждая книга относится к одной категории.
-    # При удалении категории связанные книги также будут удалены.
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE,
-        related_name='books'
+        related_name="books",
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Возвращает название книги."""
         return self.title

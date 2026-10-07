@@ -11,31 +11,31 @@ class BookInline(admin.TabularInline):
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    """Настройки отображения модели Category в административной панели."""
+    """Настраивает отображение категорий в административной панели."""
 
     inlines = [BookInline]
 
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
-    """Настройки отображения и поиска книг в административной панели."""
+    """Настраивает отображение, фильтрацию и поиск книг в админ-панели."""
 
-    # Поля, которые отображаются в списке книг.
+    # Поля, отображаемые в списке книг.
     list_display = (
-        'title',
-        'author',
-        'price',
-        'stock',
-        'category',
+        "title",
+        "author",
+        "price",
+        "stock",
+        "category",
     )
 
-    # Фильтрация списка книг по категории.
+    # Поля, доступные для фильтрации.
     list_filter = (
-        'category',
+        "category",
     )
 
-    # Поиск книг по названию и автору.
+    # Поля, по которым выполняется поиск.
     search_fields = (
-        'title',
-        'author',
+        "title",
+        "author",
     )
