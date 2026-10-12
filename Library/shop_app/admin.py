@@ -39,3 +39,4 @@ class BookAdmin(admin.ModelAdmin):
         "title",
         "author",
     )
+

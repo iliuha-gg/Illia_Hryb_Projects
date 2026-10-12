@@ -1,0 +1,37 @@
+{% extends "shop_app/base.html" %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ book.title }}</h1>
+
+<p>Author: {{ book.author }}</p>
+<p>Category: {{ book.category.name }}</p>
+<p>Price: £{{ book.price }}</p>
+<p>Stock: {{ book.stock }}</p>
+<p>Description: {{ book.description }}</p>
+
+<a href="{% url 'book_list' %}" class="btn btn-secondary">
+    Back
+</a>
+
+{% if user == book.author %}
+
+    <a
+        href="{% url 'book_update' book.pk %}"
+        class="btn btn-warning"
+    >
+        Edit
+    </a>
+
+    <a
+        href="{% url 'book_delete' book.pk %}"
+        class="btn btn-danger"
+    >
+        Delete
+    </a>
+
+{% endif %}
+
+{% endblock %}
