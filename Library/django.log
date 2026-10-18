@@ -30,3 +30,6 @@
 [INFO] 2026-10-18 21:01:08,388 books.middleware: GET / | Status: 200 | Duration: 15.78 ms
 [INFO] 2026-10-18 21:01:11,697 books.middleware: GET /accounts/login/ | Status: 200 | Duration: 11.42 ms
 [INFO] 2026-10-18 21:01:17,064 books.middleware: GET /accounts/password/reset/ | Status: 200 | Duration: 15.22 ms
+[INFO] 2026-10-18 21:25:30,226 books.mixins: AnonymousUser opened BookListView with GET request
+[INFO] 2026-10-18 21:25:30,369 books.middleware: GET / | Status: 200 | Duration: 142.98 ms
+[INFO] 2026-10-18 21:25:33,032 books.middleware: GET /accounts/login/ | Status: 200 | Duration: 13.91 ms

@@ -1,0 +1,36 @@
+
+# Виртуальное окружение
+.venv/
+venv/
+
+# Переменные окружения
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Git
+.git/
+.gitignore
+
+# PyCharm
+.idea/
+
+# SQLite
+*.sqlite3
+*.sqlite3-journal
+
+# Логи
+*.log
+
+# Резервные копии
+backups/
+
+# Собранная статика
+staticfiles/
+
+# Системные файлы macOS
+.DS_Store
