@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -12,9 +12,8 @@ from django.views.generic import (
 from .forms import BookForm
 from .mixins import (
     ActionLogMixin,
-    AuthorMixin,
-    AuthorRequiredMixin,
     InStockOnlyMixin,
+    AuthorMixin,
 )
 from .models import Book, Category
 
@@ -45,7 +44,7 @@ class BookListView(
     """Отображает список книг с фильтрацией по категории."""
 
     model = Book
-    template_name = "shop_app/book_list.html"
+    template_name = "books/book_list.html"
     context_object_name = "books"
     paginate_by = 10
 
@@ -76,12 +75,14 @@ class BookDetailView(
     """Отображает подробную информацию о книге."""
 
     model = Book
-    template_name = "shop_app/book_detail.html"
+    template_name = "books/book_detail.html"
     context_object_name = "book"
 
 
 class BookCreateView(
     LoginRequiredMixin,
+    PermissionRequiredMixin,
+    ActionLogMixin,
     AuthorMixin,
     CreateView,
 ):
@@ -89,31 +90,36 @@ class BookCreateView(
 
     model = Book
     form_class = BookForm
-    template_name = "shop_app/book_form.html"
+    template_name = "books/book_form.html"
     success_url = reverse_lazy("book_list")
+    permission_required = "books.add_book"
 
 
 class BookUpdateView(
     LoginRequiredMixin,
-    AuthorRequiredMixin,
+    PermissionRequiredMixin,
+    ActionLogMixin,
     UpdateView,
 ):
     """Позволяет автору редактировать свою книгу."""
 
     model = Book
     form_class = BookForm
-    template_name = "shop_app/book_form.html"
+    template_name = "books/book_form.html"
     success_url = reverse_lazy("book_list")
+    permission_required = "books.change_book"
 
 
 class BookDeleteView(
     LoginRequiredMixin,
-    AuthorRequiredMixin,
+    PermissionRequiredMixin,
+    ActionLogMixin,
     DeleteView,
 ):
     """Позволяет автору удалить свою книгу."""
 
     model = Book
-    template_name = "shop_app/book_confirm_delete.html"
+    template_name = "books/book_confirm_delete.html"
     context_object_name = "book"
     success_url = reverse_lazy("book_list")
+    permission_required = "books.delete_book"

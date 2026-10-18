@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('price', models.DecimalField(decimal_places=2, max_digits=5)),
                 ('description', models.TextField()),
                 ('stock', models.IntegerField()),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='books', to='shop_app.category')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='books', to='books.category')),
             ],
         ),
     ]

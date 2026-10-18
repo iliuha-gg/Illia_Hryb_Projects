@@ -3,7 +3,7 @@ import random
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 
-from shop_app.models import Book, Category
+from books.models import Book, Category
 
 
 User = get_user_model()

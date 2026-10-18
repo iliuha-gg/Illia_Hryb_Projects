@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 
-from shop_app.models import Category
+from books.models import Category
 
 
 class Command(BaseCommand):
